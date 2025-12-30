@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight Ticket Booking</title>
+</head>
+<body>
+
+<h2>Flight Ticket Booking System</h2>
+<button onclick="bookTicket()">Book Ticket</button>
+
+<script>
+function bookTicket() {
+
+  // Prompt for passenger name
+  var name = prompt("Enter Passenger Name:");
+  if (name === null || name === "") {
+    alert("Booking cancelled! Name is required.");
+    return;
+  }
+
+  // Prompt for destination
+  var destination = prompt("Enter Destination:");
+  if (destination === null || destination === "") {
+    alert("Booking cancelled! Destination is required.");
+    return;
+  }
+
+  // Prompt for number of tickets
+  var tickets = prompt("Enter Number of Tickets:");
+  if (tickets === null || tickets === "" || isNaN(tickets)) {
+    alert("Invalid ticket count!");
+    return;
+  }
+
+  // Calculate amount
+  var pricePerTicket = 5000;
+  var totalAmount = tickets * pricePerTicket;
+
+  // Confirmation dialog
+  var confirmBooking = confirm(
+    "Passenger: " + name +
+    "\nDestination: " + destination +
+    "\nTickets: " + tickets +
+    "\nTotal Amount: ₹" + totalAmount +
+    "\n\nDo you want to confirm booking?"
+  );
+
+  // Result alert
+  if (confirmBooking) {
+    alert("🎉 Booking Successful!\nHappy Journey, " + name + " ✈️");
+  } else {
+    alert("❌ Booking Cancelled.");
+  }
+}
+</script>
+
+</body>
+</html>
