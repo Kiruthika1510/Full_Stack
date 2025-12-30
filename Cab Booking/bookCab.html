@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Cab Booking</title>
+</head>
+<body>
+
+<h2>Online Cab Booking Application</h2>
+<button onclick="bookCab()">Book Cab</button>
+
+<script>
+function bookCab() {
+
+  // Prompt for customer name
+  var name = prompt("Enter Customer Name:");
+  if (name === null || name === "") {
+    alert("Booking cancelled! Name is required.");
+    return;
+  }
+
+  // Prompt for pickup location
+  var pickup = prompt("Enter Pickup Location:");
+  if (pickup === null || pickup === "") {
+    alert("Booking cancelled! Pickup location is required.");
+    return;
+  }
+
+  // Prompt for drop location
+  var drop = prompt("Enter Drop Location:");
+  if (drop === null || drop === "") {
+    alert("Booking cancelled! Drop location is required.");
+    return;
+  }
+
+  // Prompt for distance
+  var distance = prompt("Enter Distance in KM:");
+  if (distance === null || distance === "" || isNaN(distance)) {
+    alert("Invalid distance!");
+    return;
+  }
+
+  // Fare calculation
+  var farePerKm = 15;
+  var totalFare = distance * farePerKm;
+
+  // Confirmation dialog
+  var confirmBooking = confirm(
+    "Customer Name: " + name +
+    "\nPickup: " + pickup +
+    "\nDrop: " + drop +
+    "\nDistance: " + distance + " km" +
+    "\nTotal Fare: ₹" + totalFare +
+    "\n\nConfirm Cab Booking?"
+  );
+
+  // Final alert
+  if (confirmBooking) {
+    alert("🚕 Cab Booked Successfully!\nDriver will arrive soon.\nHappy Journey, " + name + "!");
+  } else {
+    alert("❌ Cab Booking Cancelled.");
+  }
+}
+</script>
+
+</body>
+</html>
