@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel Reservation System</title>
+</head>
+<body>
+
+<h2>Hotel Reservation System</h2>
+<button onclick="reserveRoom()">Reserve Room</button>
+
+<script>
+function reserveRoom() {
+
+  // Prompt for guest name
+  var name = prompt("Enter Guest Name:");
+  if (name === null || name === "") {
+    alert("Reservation cancelled! Name is required.");
+    return;
+  }
+
+  // Prompt for room type
+  var roomType = prompt(
+    "Enter Room Type:\nSingle / Double / Deluxe"
+  );
+  if (roomType === null || roomType === "") {
+    alert("Reservation cancelled! Room type is required.");
+    return;
+  }
+
+  // Prompt for number of days
+  var days = prompt("Enter Number of Days to Stay:");
+  if (days === null || days === "" || isNaN(days)) {
+    alert("Invalid number of days!");
+    return;
+  }
+
+  // Room price calculation
+  var pricePerDay;
+  if (roomType.toLowerCase() === "single") {
+    pricePerDay = 2000;
+  } else if (roomType.toLowerCase() === "double") {
+    pricePerDay = 3500;
+  } else if (roomType.toLowerCase() === "deluxe") {
+    pricePerDay = 5000;
+  } else {
+    alert("Invalid room type!");
+    return;
+  }
+
+  var totalAmount = days * pricePerDay;
+
+  // Confirmation dialog
+  var confirmReservation = confirm(
+    "Guest Name: " + name +
+    "\nRoom Type: " + roomType +
+    "\nDays: " + days +
+    "\nTotal Amount: ₹" + totalAmount +
+    "\n\nConfirm Reservation?"
+  );
+
+  // Final alert
+  if (confirmReservation) {
+    alert("🏨 Reservation Confirmed!\nEnjoy your stay, " + name + " 😊");
+  } else {
+    alert("❌ Reservation Cancelled.");
+  }
+}
+</script>
+
+</body>
+</html>
